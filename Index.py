@@ -6,8 +6,12 @@ tasks_file = 'tasks.json'
 
 def load_tasks():
     if os.path.exists(tasks_file):
-        with open(tasks_file, 'r') as file:
-            return json.load(file)
+        try:
+            with open(tasks_file, 'r') as file:
+                return json.load(file)
+        except json.JSONDecodeError:
+            # If the file is empty or contains invalid JSON, return an empty dictionary
+            return {}
     return {}
 
 def save_tasks(tasks):
@@ -68,6 +72,11 @@ def list_ongoing_timers(tasks):
         list_ongoing_timers(task['subtasks'])
 
 def main():
+    # Initialize the JSON file if it doesn't exist
+    if not os.path.exists(tasks_file):
+        with open(tasks_file, 'w') as file:
+            json.dump({}, file)
+
     tasks = load_tasks()
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
