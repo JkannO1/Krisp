@@ -11,12 +11,14 @@ TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
 python 'path\to\your\script\'Index.py
 ```
 Replace path\to\your\script\Index.py with the actual path to your Index.py file.
+
 4. Add the batch file's directory to your system's PATH (if it's not already in the PATH):
     Right-click on 'This PC' or 'Computer' on your desktop or in File Explorer, and select 'Properties'.
     Click on 'Advanced system settings'.
     Click on the 'Environment Variables' button.
     In the 'System variables' section, find the Path variable and select it. Click 'Edit'.
-    Add the directory where your krispy.bat file is located to the list of paths.
+    Add the directory where your krispy.bat file is located to the list of paths.\
+
 5. Run `krispy` in your command prompt.
 Easy enough.
 
