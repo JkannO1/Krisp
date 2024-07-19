@@ -1,5 +1,6 @@
 # Krispy
-Personal CLI task manager in Python.
+Personal CLI task manager in Python
+
 TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
 ## Install (windows)
 1. clone the repo
