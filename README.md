@@ -1,6 +1,6 @@
 # Krispy
-Personal CLI task manager in Python
-TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
+Personal CLI task manager in Python ;
+TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯;
 ## Install (windows)
 1. clone the repo
 2. Create a batch file to run the Python script. Name this file 'krispy.bat' and place it in the default cmd directory that is (C:\Users\name) or what ever you have it to.
