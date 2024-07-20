@@ -2,7 +2,7 @@
 Personal CLI task manager in Python
 
 TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
-## Features (With nots for devs)
+## Features (With notes for devs)
 1. Add tasks and sub-tasks infinitely (such tasks are called "Nested Tasks")
 2. Record time spend per task/subtask
 3. detailed calender view showing deadlines of tasks and events
