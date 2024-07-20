@@ -1,6 +1,7 @@
 import json
 import os
 import time
+from colorama import Fore, Back, Style
 
 tasks_file = 'tasks.json'
 
@@ -32,12 +33,6 @@ def add_task(tasks, task_name, parent_id=None):
         tasks[parent_id]['subtasks'][task_id] = new_task
     save_tasks(tasks)
 
-def list_tasks(tasks, parent_id=None, level=0):
-    for task_id, task in tasks.items():
-        if task['parent_id'] == parent_id:
-            print('  ' * level + f"{task_id}. {task['name']} (Elapsed Time: {task['elapsed_time']}s)")
-            list_tasks(task['subtasks'], task_id, level + 1)
-
 def edit_task(tasks, task_id, new_name):
     if task_id in tasks:
         tasks[task_id]['name'] = new_name
@@ -55,6 +50,13 @@ def start_task(tasks, task_id):
     if task_id in tasks:
         tasks[task_id]['start_time'] = time.time()
         save_tasks(tasks)
+
+def list_tasks(tasks, parent_id=None, level=0):
+    for task_id, task in tasks.items():
+        if task['parent_id'] == parent_id:
+            elapsed_hours = task['elapsed_time'] / 3600  # Convert seconds to hours
+            print('  ' * level + f"{task_id}. {Fore.RED}{task['name']}{Fore.WHITE} (Elapsed Time: {Fore.RED}{elapsed_hours:.2f}h{Fore.WHITE})")
+            list_tasks(task['subtasks'], task_id, level + 1)
 
 def stop_task(tasks, task_id):
     if task_id in tasks and tasks[task_id]['start_time']:
