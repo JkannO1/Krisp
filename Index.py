@@ -15,7 +15,6 @@ def load_tasks():
         except json.JSONDecodeError:
             return {}
     return {}
-
 def save_tasks(tasks):
     with open(tasks_file, 'w') as file:
         json.dump(tasks, file, indent=4)
@@ -58,7 +57,15 @@ def add_event(events, event_name, event_date):
 def display_calendar(events):
     print(f"\n{Fore.YELLOW}Calendar View:{Fore.WHITE}")
     for event_date, event_list in sorted(events.items()):
-        print(f"{event_date}:")
+        print(f"{Fore.RED}{event_date}{Fore.WHITE}:")
+        for event in event_list:
+            print(f"  - {event}")
+    input("Press Enter to continue...")
+
+def display_calendar1(events):
+    print(f"\n{Fore.YELLOW}Calendar View:{Fore.WHITE}")
+    for event_date, event_list in sorted(events.items()):
+        print(f"{Fore.RED}{event_date}{Fore.WHITE}:")
         for event in event_list:
             print(f"  - {event}")
 
@@ -68,7 +75,7 @@ def edit_task(tasks, task_id, new_name):
         save_tasks(tasks)
     else:
         print(f"Error: Task ID {task_id} not found.")
-
+ 
 def delete_task(tasks, task_id):
     if task_id in tasks:
         parent_id = tasks[task_id]['parent_id']
@@ -113,8 +120,9 @@ def list_ongoing_timers(tasks):
             if not ongoing:
                 print(f"\n{Fore.YELLOW}Ongoing Timers:{Fore.WHITE}")
                 ongoing = True
-            print(f"{task_id}. {task['name']} (Started at: {time.ctime(task['start_time'])})")
-        ongoing = list_ongoing_timers(task['subtasks']) or ongoing
+            print(f"{task_id}. {Fore.RED}{task['name']}{Fore.WHITE} (Started at: {time.ctime(task['start_time'])})")
+        if list_ongoing_timers(task['subtasks']):
+            ongoing = True
     return ongoing
 
 def main():
@@ -133,15 +141,21 @@ def main():
         list_tasks(tasks)
         if not list_ongoing_timers(tasks):
             print(f"\n{Fore.YELLOW}Ongoing Timers:{Fore.WHITE}\nNone")
-        display_calendar(events)
+        display_calendar1(events)
         print(f"\n{Fore.YELLOW}Commands:{Fore.WHITE}")
         print("add_task, add_event, list, edit, delete, start, stop, calendar, quit")
-        command = input("Enter command: ").strip().lower()
+        command = input(f"{Fore.GREEN}Enter command: {Fore.WHITE}").strip().lower()
         if command == 'add_task':
             task_name = input("Enter task name: ").strip()
             parent_id = input("Enter parent task ID (or leave blank for top-level task): ").strip() or None
             due_date = input("Enter due date (YYYY-MM-DD) or leave blank: ").strip() or None
-            priority = int(input("Enter priority (0-5, where 5 is highest): ").strip() or 0)
+            try:
+                priority = int(input("Enter priority (0-5, where 5 is highest): ").strip() or 0)
+                if priority < 0 or priority > 5:
+                    raise ValueError
+            except ValueError:
+                print("Invalid priority. Please enter a number between 0 and 5.")
+                continue
             add_task(tasks, task_name, parent_id, due_date, priority)
         elif command == 'add_event':
             event_name = input("Enter event name: ").strip()
