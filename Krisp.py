@@ -137,6 +137,18 @@ def main():
     events = load_events()
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
+        print("$$\   $$\           $$\                     ")
+        print("$$ | $$  |          \__|                    ")
+        print("$$ |$$  /  $$$$$$\  $$\  $$$$$$$\  $$$$$$\  ")
+        print("$$$$$  /  $$  __$$\ $$ |$$  _____|$$  __$$\ ")
+        print("$$  $$<   $$ |  \__|$$ |\$$$$$$\  $$ /  $$ |")
+        print("$$ |\$$\  $$ |      $$ | \____$$\ $$ |  $$ |")
+        print("$$ | \$$\ $$ |      $$ |$$$$$$$  |$$$$$$$  |")
+        print("\__|  \__|\__|      \__|\_______/ $$  ____/ ")
+        print("                                  $$ |      ")
+        print("                                  $$ |      ")
+        print("                                  \__|      ")
+        print("                                  by JkannO1      ")
         print(f"\n{Fore.YELLOW}Current Tasks:{Fore.WHITE}")
         list_tasks(tasks)
         if not list_ongoing_timers(tasks):
