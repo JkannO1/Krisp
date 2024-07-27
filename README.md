@@ -1,4 +1,4 @@
-# Krispy
+# Krisp
 Personal CLI task manager in Python
 
 TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
@@ -12,13 +12,13 @@ TL;DR walmart Emacs Orgmode ¯\_(ツ)_/¯
 ```
 pip install colorama
 ```
-3. Create a batch file to run the Python script. Name this file 'krispy.bat' and place it in the default cmd directory that is (C:\Users\name) or what ever you have it to.
+3. Create a batch file to run the Python script. Name this file 'krisp.bat' and place it in the default cmd directory that is (C:\Users\name) or what ever you have it to.
 4. in the batch file add the following lines:
 ```
 @echo off
-python 'path\to\your\script\'Index.py
+python 'path\to\your\script\'Krisp.py
 ```
-Replace path\to\your\script\Index.py with the actual path to your Index.py file.
+Replace path\to\your\script\Index.py with the actual path to your krisp.py file.
 
 4. Add the batch file's directory to your system's PATH (if it's not already in the PATH):
     Right-click on 'This PC' or 'Computer' on your desktop or in File Explorer, and select 'Properties'.
@@ -27,6 +27,6 @@ Replace path\to\your\script\Index.py with the actual path to your Index.py file.
     In the 'System variables' section, find the Path variable and select it. Click 'Edit'.
     Add the directory where your krispy.bat file is located to the list of paths.\
 
-5. Run `krispy` in your command prompt.
+5. Run `krisp` in your command prompt.
 Easy enough.
 
